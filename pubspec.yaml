@@ -40,9 +40,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts:
   get_storage:
-  get:
   lottie:
-
   
 
 dev_dependencies:

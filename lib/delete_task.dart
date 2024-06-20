@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-void delete_task(index, context, tasks, StateSetter setState) {
-  showDialog(
+var status = false;
+Future delete_task(index, context, tasks, StateSetter setState) {
+  return showDialog(
     context: context,
     builder: (context) {
       return AlertDialog(
@@ -13,6 +14,7 @@ void delete_task(index, context, tasks, StateSetter setState) {
         actions: [
           TextButton(
             onPressed: () {
+              status = false;
               Navigator.of(context).pop();
             },
             child: const Text(
@@ -22,10 +24,8 @@ void delete_task(index, context, tasks, StateSetter setState) {
           ),
           TextButton(
             onPressed: () {
-              setState(() {
-                tasks.removeAt(index);
-                Navigator.of(context).pop();
-              });
+              status = true;
+              Navigator.of(context).pop();
             },
             child: Text(
               'Yes',

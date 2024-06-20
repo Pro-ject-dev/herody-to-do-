@@ -128,8 +128,16 @@ class _HomeState extends State<Home> {
                             onPressed: () {
                               try {
                                 setState(() {
-                                  delete_task(index, context, task, setState);
-                                  GetStorage().write('task', task);
+                                  delete_task(index, context, task, setState)
+                                      .whenComplete(() {
+                                    if (status) {
+                                      setState(() {
+                                        task.removeAt(index);
+                                        GetStorage().write('task', task);
+                                        print(GetStorage().read('task'));
+                                      });
+                                    }
+                                  });
                                 });
                               } catch (error) {
                                 print('Error deleting task: $error');

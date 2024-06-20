@@ -7,7 +7,7 @@ void edit_task(
     context: context,
     builder: (context) {
       return AlertDialog(
-        title: Text('Add New Task'),
+        title: Text('Edit Task'),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [

@@ -26,8 +26,15 @@ class _HomeState extends State<Home> {
   Future<void> initializeStorage() async {
     try {
       await GetStorage.init();
+      var storedTasks = GetStorage().read('task');
       setState(() {
-        task = GetStorage().read<List<Map<String, dynamic>>>('task') ?? [];
+        if (storedTasks != null) {
+          task = (storedTasks as List)
+              .map((item) => Map<String, dynamic>.from(item))
+              .toList();
+        } else {
+          task = [];
+        }
       });
     } catch (error) {
       setState(() {

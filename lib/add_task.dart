@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 
 void add_task(BuildContext context, bool isCompleted,
     List<Map<String, dynamic>> tasks, StateSetter setState) {
@@ -9,7 +11,7 @@ void add_task(BuildContext context, bool isCompleted,
     context: context,
     builder: (context) {
       return AlertDialog(
-        title: Text('Add New Task'),
+        title: const Text('Add New Task'),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -18,7 +20,7 @@ void add_task(BuildContext context, bool isCompleted,
               onChanged: (value) {
                 title = value;
               },
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(color: Colors.black)),
                   labelStyle:
@@ -27,7 +29,7 @@ void add_task(BuildContext context, bool isCompleted,
             ),
             TextField(
               cursorColor: Colors.grey,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(color: Colors.black)),
                   labelStyle:
@@ -44,7 +46,7 @@ void add_task(BuildContext context, bool isCompleted,
             onPressed: () {
               Navigator.of(context).pop();
             },
-            child: Text(
+            child: const Text(
               'Cancel',
               style: TextStyle(color: Colors.black),
             ),
@@ -66,7 +68,7 @@ void add_task(BuildContext context, bool isCompleted,
                 Navigator.of(context).pop();
               }
             },
-            child: Text(
+            child: const Text(
               'Add',
               style: TextStyle(color: Colors.black),
             ),
@@ -75,4 +77,18 @@ void add_task(BuildContext context, bool isCompleted,
       );
     },
   );
+}
+
+defaultbg() {
+  return Center(
+      child: Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      SizedBox(
+          height: 100,
+          width: 100,
+          child: Lottie.asset("./assets/bg.json", fit: BoxFit.cover)),
+      Text("No tasks available", style: GoogleFonts.poppins(fontSize: 18)),
+    ],
+  ));
 }
